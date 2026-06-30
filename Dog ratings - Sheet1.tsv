@@ -1,0 +1,56 @@
+DN	Age (years)	Weight (lbs)	Sex	Breed (owner identified)	Signs of confusion 6 mo. prior	Lowest pressure recorded	Highest pressure recorded	Duration of perfusion	Volume used (Liters)	Chemicals used	Route of perfusion	PMI (minutes)	ACA R Gross (For all: 0 Non-perfused (~0-5%) | 1 Partially Perfused (~5-50%) | 2 Predominantly Perfused (~51-95%) | 3 Near-Complete Perfusion (~95-100%)) 	MCA R Gross	PCA R Gross	CB R Gross	ACA L Gross	MCA L Gross	PCA L Gross	CB L Gross	ACA R CT	MCA R CT	PCA R CT	CB R CT	ACA L CT	MCA L CT	PCA L CT	CB L CT	Consensus Blood Clearance (0-3 Scale) - Region H	Consensus Blood Clearance (0-3 Scale) - Region T
+9	12	9	Male	Pomeranian	No	NR	NR	NR	NR	PBS	Transcardial	No Time of Death (TOD) recorded																		
+23	17	100	Unk	Aussie/Rottweiler	No	NR	NR	NR	NR	Small amount of tap water	Carotid arteries	No TOD recorded																		
+65	17	5	Female	Miniature Pinscher	No	NR	NR	NR	NR	10% NBF	Transcardial	90m																		
+91	16	65	Unk	Rhodesian Ridgeback	Yes		Not perfused					No TOD recorded																	1	1
+101	15	20	Unk	Boston Terrier	No		Not perfused					No TOD recorded																		
+117	10	85	Male	American Bulldog	No	NR	2.1	NR	NR	10% NBF, Mannitol, Omnipaque, Green color dye	Carotid arteries	No TOD recorded																		
+171	15	50	Unk	Mastiff/Pit Bull Mix	Yes, mild	NR	NR	NR	NR	10% NBF, Mannitol, Omnipaque, Green color dye	Syringe perfusion via carotid arteries	64m									2	2	2	2	2	2	2	2	2	2
+177	14	12	Male	Yorkshire Terrier	Yes, mild	NR	NR	12m	NR	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Syringe perfusion via carotid arteries	32m	3	3	3	3	3	3	3	3	3	3	3	2	3	3	3	2		
+204	18	5	Female	Mini Dachshund	Yes, moderate	0.8	1.5	22m	2.5 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Transcardial	35m									1	0	1	0	1	0	1	0	0	0
+214	14	65	Male	American Bull Terrier	Yes, moderate	2.1	3.5	19m	NR	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Carotid arteries	92m	2	2	2	2	2	2	2	2	0	0	0	1	0	0	0	1	1	0
+220	5	55	Male	Labrador/Australian Shepherd	No	0	0.3	20m	1.5 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Aortic	46m																	0	1
+226	17	18	Male	Chihuahua/Jack Russell	Yes, severe	NR	NR	NR	NR	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Aortic, then switched to carotid arteries	48m	3	3	3	3	3	3	3	3	1	1	1	1	1	1	1	1	2	3
+228	13	10	Male	Pomeranian/Chihuahua Mix	No	0.2	1.7	28m	2 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Aortic	23m	3	3	3	3	3	3	3	3	2	2	2	2	2	2	2	2	3	2
+229	12	70	Male	Pit Bull Mix	Yes, severe	0.4	0.8	22m	NR	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Aortic	66m									1	1	1	1	1	1	1	1	1	1
+230	12	100	Female	Labrador/Pit Bull Mix	No	0.65	1.83	20m	NR	10% NBF, Mannitol, Omnipaque, Green color dye	Aortic	48m	2	2	2	2	2	1	2	2	1	1	1	1	1	1	1	1	1	1
+235	8	65	Female	Labrador	No	0.3	0.5	20m	NR	10% NBF, 20% Mannitol, Omnipaque, Green color dye	Aortic	33m	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+238	11	20	Male	Dachshund Mix	Yes, mild	0.23	1.29	21m	NR	10% NBF, 10% Mannitol, Omnipaque, Green color dye	Aortic	35m	3	3	3	3	3	3	3	3	2	2	2	2	2	2	2	2	3	3
+240	12	10	Male	Chihuahua	Yes, moderate	1.6	2.7	17m	NR	10% NBF, Mannitol, Omnipaque, Green color dye	Aortic	47m	2	3	2	2	2	3	3	2	2	2	2	2	2	2	2	2	2	2
+250	15	20	Male	Chihuahua Mix	Yes, mild	1.3	4.4	17m	NR	10% NBF, 10% Mannitol, Omnipaque, Green color dye, 10% PEG35	Aortic	43m	3	3	2	3	3	3	3	3	2	1	2	2	2	1	2	2	2	2
+261	6	80	Male	Husky/German Shepherd	No	0.3	2.8	24m	4.25 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye, 10% PEG35	Aortic	48m	2	3	2	2	2	2	2	2									2	2
+270	10	100	Male	Labrador	No	0.1	1	26m	5 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye, 10% PEG35	Aortic	78m	1	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1
+272	12	80	Female	German Shepherd	Unknown	NR	NR	NR	NR	10% NBF, 10% Mannitol, Omnipaque, Green color dye, 10% PEG35	Aortic	165m	2	2	2	1	2	2	1	1	2	2	2	2	2	2	2	2	2	2
+275	12	20	Male	Boston Terrier	Yes, severe	0.51	2.355	27m	4.5 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye, 5% PEG35	Aortic	27m	2	3	3	3	2	3	3	3	1	1	1	1	1	1	1	1	3	2
+281	9	115	Male	Alaskan Malamute	No	1.5	2.6	38m	20 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye, PEG35	Aortic	58m	2	2	2	2	1	1	1	1	1	1	1	1	1	1	1	1	2	2
+291	26	5	Female	Chihuahua	Yes, moderate		Not perfused					33m	1	1	1	1	1	1	1	1									0	0
+296	1	25	Male	Aussiedoodle	No	1.1	3.1	43m	20 L	10% NBF, Mannitol, Omnipaque, Green color dye, PEG35	Aortic	43m	3	3	3	3	3	3	3	3	3	2	3	3	3	2	3	3	3	3
+299	17	16	Male	Bichon Frise/Miniature Poodle	No	0.413	1.765	13m	4 L	10% NBF, Mannitol, Omnipaque, Green color dye, PEG35	Aortic	10m	2	2	2	2	2	2	2	2	2	1	2	2	2	1	2	2	2	3
+303	17	25	Female	Australian Labradoodle	Yes, mild	0.4	1.3	14m	4 L	10% NBF, 10% Mannitol, Omnipaque, Green color dye, 5% PEG35	Aortic	33m	3	3	2	3	3	3	2	3	2	1	2	2	2	1	2	2		
+308	5	80	Male	Pit Bull Terrier	No	0.67	0.81	27m	7.65 L	10% NBF, Mannitol, Omnipaque, Green color dye, PEG35	Aortic	45m	2	1	2	2	2	1	2	2	1	1	1	1	1	1	1	1		
+310	13	60	Male	Lab/Heeler	Yes, severe	0.58	2.7	41m	16.5 L	20% NBF, 10% Mannitol, Omnipaque	Aortic	31m	3	2	3	3	3	3	3	3	2	2	2	2	2	2	2	2		
+313	13	10	Male	Shih Tzu/Yorkie	Yes, moderate		Not perfused					64m	2	2	2	2	2	2	2	2										
+315	5	25	Male	French Bulldog	Yes, mild		Not perfused					80m	1	1	1	1	1	1	1	1										
+323	14	40	Female	Pit Bull/Boxer	Yes, mild	1.1	3.4	22m	8 L	20% NBF, 10% Mannitol, Omnipaque, Green color dye	Aortic	48m	2	2	2	2	3	3	3	3	2	2	2	2	2	2	2	2		
+327	13	20	Male	Terrier Mix	Yes, moderate	0.5	0.68	25m	8 L	20% NBF, 20% Mannitol, Omnipaque, Green color dye	Aortic	No TOD recorded	3	3	3	3	3	3	3	3	3	2	3	3	3	2	3	3		
+329	15	14	Male	Chihuahua/Terrier	No	0.8	2.9	NR	4.2 L	20% NBF, 10% Mannitol, 1% Glutaraldehyde, Omnipaque, Green color dye	Aortic	36m	3	3	3	3	3	3	3	3	2	2	2	2	2	2	2	2		
+331	16	70	Female	Rhodesian Ridgeback	Yes, moderate	0.674	1.523	31m	12.9 L	20% NBF, 10% Mannitol, 1% Glutaraldehyde, Omnipaque, Green color dye	Aortic	60m	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1		
+334	11	90	Female	German Shepherd	No	0.2	2.012	47m	19.3 L	20% NBF, 10% Mannitol, 1% Glutaraldehyde, Omnipaque, Green color dye	Aortic	34m	2	2	2	2	2	2	2	2										
+343	12	15	Male	Pug	Yes, mild		Not perfused					No TOD recorded	2	2	2	2	2	2	2	2										
+344	12	75	Male	Bulldog/Pit Bull	Yes, mild	0.5	8.4	55m	19 L	20% NBF, 10% Mannitol, 1% Glutaraldehyde, Omnipaque	Aortic	50m	2	2	1	2	2	2	1	2										
+346	13	55	Female	Rottweiler Mix	Yes, moderate	0.25	3.4	46m	14.3 L	20% NBF, 10% Mannitol, 5% PEG35, 1% Glutaraldehyde, Omnipaque (150mL)	Aortic	33m	1	1	1	1	1	1	1	1										
+347	17	13	Female	Miniature Pinscher/Chihuahua	No	0.679	4.3	25m	7.2 L	20% NBF, 10% Mannitol, 5% PEG35, Omnipaque	Aortic	25m	2	2	2	2	2	2	2	2										
+353	13	35	Female	Golden Retriever/Border Collie	No	0.4	1.5	13m	20 L	20% NBF	Aortic	16m	2	2	2	2	3	3	3	2										
+356	13	70	Female	Lab Mix	No	2.1	5.7	19m	20 L	20% NBF, 10% Mannitol, 5% PEG, 1% Glutaraldehyde, 150mL Omnipaque	Aortic	25m	2	2	1	2	2	2	1	2										
+360	12	40	Female	Lab/Husky	Yes, mild	0.49	2.31	26m	19 L	20% NBF, 10% Mannitol, 1% Glutaraldehyde	Aortic	28m	1	1	1	1	2	2	2	2										
+361	17	16	Female	Greyhound/Rat Terrier	Yes, mild	0.4	2.8	20m	10 L	20% NBF	Aortic	24m	2	2	2	2	2	2	2	2										
+362	7	80	Male	Great Pyrenees	No	0.6	1.5	36m	19 L	20% NBF	Aortic	27m	2	2	2	2	2	2	2	2										
+363	12	10	Male	Chihuahua	No	1	2.2	20m	18 L	20% NBF	Aortic	19m	3	3	3	3	3	3	3	3										
+368	16	10	Female	Dachshund	Yes, moderate	0.87	3.7	53m	16 L	20% NBF	Aortic	20m	3	3	3	3	3	3	3	3										
+370	14	23	Male	Schipperke	Yes, mild	0.4	2.6	46m	12.5 L	20% NBF	Aortic	19m	3	3	3	3	3	3	3	3										
+373	14	4	Female	Chihuahua/Terrier	No	1.35	2.92	17m	8 L	10% NBF	Aortic	27m	2	2	2	2	2	2	2	2										
+379	12	9	Male	Papillon	No		Not perfused					95m	2	2	2	2	2	2	2	2										
+380	14	90	Male	Mixed Breed	Yes, mild		Not perfused					72m	1	1	1	1	1	1	1	1										
+386	10	120	Male	Chowbrador	No	0.48	1.85	36m	18.5 L	10% NBF	Aortic	22m	2	2	2	2	2	2	2	2										
+389	14	70	Female	Labrador	No	0.7	2.25	25m	27 L	10% NBF	Aortic	22m	1	1	1	1	2	2	2	2										
+395	14	68	Male	Pointer Mix	No	0.43	3.079	35m	18.9 L	10% NBF	Aortic	22m	3	2	3	3	3	2	3	3										
