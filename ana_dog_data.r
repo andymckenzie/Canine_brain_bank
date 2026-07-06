@@ -2,6 +2,7 @@ library(readr)
 library(dplyr)
 library(stringr)
 
+setwd("C:/Users/AndyMcKenzie.sparksbrain/Dropbox/Dog-Brain-Bank/")
 raw <- read_tsv("Dog ratings - Sheet1.tsv", col_types = cols(.default = col_character()))
 
 # the first gross column header carries the scoring legend; trim it to its prefix
@@ -25,6 +26,35 @@ litres <- function(x) {
   suppressWarnings(as.numeric(str_replace(x, "\\s*l", "")))
 }
 
+# calculating weight classes and cognitive impairment 
+
+cohort_summary <- raw %>%
+  mutate(
+    weight = as.numeric(`Weight (lbs)`),
+    weight_class = case_when(
+      weight >= 88 ~ "Giant",
+      weight >= 55 ~ "Large",
+      weight >= 22 ~ "Medium",
+      weight >= 11 ~ "Small",
+      weight >= 2  ~ "Toy",
+      TRUE ~ NA_character_
+    ),
+    cognitive_status = case_when(
+      `Signs of confusion 6 mo. prior` == "No" ~ "No",
+      str_detect(`Signs of confusion 6 mo. prior`, "^Yes") ~ "Impaired",
+      TRUE ~ "Unknown"
+    )
+  )
+
+cohort_summary %>%
+  count(weight_class) %>%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+cohort_summary %>%
+  count(cognitive_status) %>%
+  mutate(percent = round(100 * n / sum(n), 2))
+
+# perfusion calculations
 df <- raw %>%
   rename(
     age = `Age (years)`, weight = `Weight (lbs)`,
