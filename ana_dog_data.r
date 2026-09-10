@@ -116,61 +116,251 @@ num_vars <- df %>%
   select(age, weight, pmi_min, dur_min, p_low, p_high, volume_L, flow_per_lb,
          gross_composite, ct_composite, hist_composite)
 
-vlab <- c("Age","Weight","PMI (min)","Duration (min)","Lowest Pressure (PSI)",
-          "Highest Pressure (PSI)","Volume (L)","Flow (mL/min/lb)",
-          "Gross Score","CT Score","Histology Score")
+vlab <- c(
+  "Age",
+  "Weight",
+  "PMI (min)",
+  "Duration (min)",
+  "Low Pressure",
+  "High Pressure",
+  "Volume (L)",
+  "Flow Rate",
+  "Gross Score",
+  "CT Score",
+  "Histology"
+)
+
 spm_vars <- num_vars
 colnames(spm_vars) <- vlab
 
-stars <- function(p) if (is.na(p)) "" else if (p<.001) "***" else if (p<.01) "**" else if (p<.05) "*" else ""
+
+stars <- function(p) {
+  if (is.na(p)) ""
+  else if (p < .001) "***"
+  else if (p < .01) "**"
+  else if (p < .05) "*"
+  else ""
+}
+
 
 panel_lower <- function(x, y, ...) {
-  points(x, y, pch = 19, cex = 0.6, col = adjustcolor("#444444", alpha.f = 0.5))
+  
   ok <- is.finite(x) & is.finite(y)
+  
+  # Scatter points: darker and slightly larger
+  points(
+    x, y,
+    pch = 19,
+    cex = 0.72,
+    col = adjustcolor("black", alpha.f = 0.60)
+  )
+  
   p <- NA
-  if (sum(ok) >= 4) { ct <- suppressWarnings(cor.test(x[ok], y[ok], method="spearman")); p <- ct$p.value }
-  if (sum(ok) >= 3) {
-    f <- lm(y[ok] ~ x[ok]); xs <- range(x[ok]); ys <- coef(f)[1] + coef(f)[2]*xs
-    s <- !is.na(p) && p < .05
-    lines(xs, ys, col = if (s) "red" else "grey60", lwd = if (s) 1.6 else 1.1, lty = if (s) 1 else 2)
+  
+  if (sum(ok) >= 4) {
+    ct <- suppressWarnings(
+      cor.test(x[ok], y[ok], method = "spearman")
+    )
+    p <- ct$p.value
   }
-  txt <- if (sum(ok) >= 4)
-    paste0("rho=", format(ct$estimate, digits=2), stars(p),
-           "\np=", format.pval(p, digits=2, eps=1e-4), "  n=", sum(ok))
-  else paste0("n=", sum(ok))
-  u <- par("usr"); tx <- u[1]+0.05*(u[2]-u[1]); ty <- u[4]-0.06*(u[4]-u[3])
-  rect(tx, ty - strheight(txt, cex=0.85),
-       tx + max(strwidth(strsplit(txt,"\n")[[1]], cex=0.85)), ty,
-       col = adjustcolor("white", alpha.f=0.75), border = NA)
-  text(tx, ty, txt, cex = 0.85, adj = c(0,1))
+  
+  # Regression line
+  if (sum(ok) >= 3) {
+    
+    f <- lm(y[ok] ~ x[ok])
+    
+    xs <- range(x[ok])
+    ys <- coef(f)[1] + coef(f)[2] * xs
+    
+    sig <- !is.na(p) && p < .05
+    
+    lines(
+      xs, ys,
+      col = if (sig) "red" else "grey50",
+      lwd = if (sig) 2.0 else 1.4,
+      lty = if (sig) 1 else 2
+    )
+  }
+  
+  # Correlation annotation
+  txt <- if (sum(ok) >= 4) {
+    paste0(
+      "rho=", format(ct$estimate, digits = 2), stars(p),
+      "\np=", format.pval(p, digits = 2, eps = 1e-4),
+      "  n=", sum(ok)
+    )
+  } else {
+    paste0("n=", sum(ok))
+  }
+  
+  u <- par("usr")
+  
+  tx <- u[1] + 0.035 * (u[2] - u[1])
+  ty <- u[4] - 0.045 * (u[4] - u[3])
+  
+  # White backing behind annotation
+  rect(
+    tx,
+    ty - strheight(txt, cex = 1.08) * 1.08,
+    tx + max(strwidth(strsplit(txt, "\n")[[1]], cex = 1.08)) * 1.03,
+    ty,
+    col = adjustcolor("white", alpha.f = 0.88),
+    border = NA
+  )
+  
+  # Larger scatterplot text
+  text(
+    tx, ty, txt,
+    cex = 1.08,
+    font = 2,
+    adj = c(0, 1)
+  )
 }
+
 
 panel_upper <- function(x, y, ...) {
-  ok <- is.finite(x) & is.finite(y); u <- par("usr")
+  
+  ok <- is.finite(x) & is.finite(y)
+  u <- par("usr")
+  
   if (sum(ok) >= 4) {
-    ct <- suppressWarnings(cor.test(x[ok], y[ok], method="spearman")); r <- as.numeric(ct$estimate)
-    it <- min(abs(r), 1)
-    fill <- if (r >= 0) rgb(1-it, 1-it, 1) else rgb(1, 1-it, 1-it)
-    rect(u[1], u[3], u[2], u[4], col = fill, border = NA)
-    col <- if (it > 0.5) "white" else "black"
-    text(mean(u[1:2]), mean(u[3:4]), paste0(format(r, digits=2), stars(ct$p.value)),
-         cex = 1.8, font = 2, col = col)
-    text(mean(u[1:2]), u[3]+0.12*(u[4]-u[3]), paste0("n=", sum(ok)), cex = 1.3, col = col)
-  } else text(mean(u[1:2]), mean(u[3:4]), paste0("n=", sum(ok)), cex = 0.8)
+    
+    ct <- suppressWarnings(
+      cor.test(x[ok], y[ok], method = "spearman")
+    )
+    
+    r <- as.numeric(ct$estimate)
+    
+    # LINEAR color scaling.
+    # Low correlations remain pale; large correlations become saturated.
+    intensity <- min(abs(r), 1)
+    
+    if (r >= 0) {
+      fill <- rgb(
+        1 - intensity,
+        1 - intensity,
+        1
+      )
+    } else {
+      fill <- rgb(
+        1,
+        1 - intensity,
+        1 - intensity
+      )
+    }
+    
+    rect(
+      u[1], u[3],
+      u[2], u[4],
+      col = fill,
+      border = "grey65",
+      lwd = 1
+    )
+    
+    # White only on genuinely dark cells
+    txt_col <- if (abs(r) >= 0.55) "white" else "black"
+    
+    text(
+      mean(u[1:2]),
+      mean(u[3:4]) + 0.05 * (u[4] - u[3]),
+      paste0(
+        format(r, digits = 2),
+        stars(ct$p.value)
+      ),
+      cex = 2.05,
+      font = 2,
+      col = txt_col
+    )
+    
+    text(
+      mean(u[1:2]),
+      u[3] + 0.12 * (u[4] - u[3]),
+      paste0("n=", sum(ok)),
+      cex = 1.35,
+      font = 2,
+      col = txt_col
+    )
+    
+  } else {
+    
+    text(
+      mean(u[1:2]),
+      mean(u[3:4]),
+      paste0("n=", sum(ok)),
+      cex = 1
+    )
+  }
 }
+
 
 panel_diag <- function(x, ...) {
-  u <- par("usr"); par(usr = c(u[1:2], 0, 1.5)); on.exit(par(usr = u))
-  xx <- x[is.finite(x)]; h <- hist(xx, plot = FALSE, breaks = 10)
-  rect(h$breaks[-length(h$breaks)], 0, h$breaks[-1], h$counts/max(h$counts),
-       col = "grey85", border = "white")
-  d <- density(xx); lines(d$x, d$y/max(d$y), col = "grey30")
+  
+  u <- par("usr")
+  
+  par(
+    usr = c(u[1:2], 0, 1.5)
+  )
+  
+  on.exit(par(usr = u))
+  
+  xx <- x[is.finite(x)]
+  
+  h <- hist(
+    xx,
+    plot = FALSE,
+    breaks = 10
+  )
+  
+  rect(
+    h$breaks[-length(h$breaks)],
+    0,
+    h$breaks[-1],
+    h$counts / max(h$counts),
+    col = "grey75",
+    border = "white"
+  )
+  
+  d <- density(xx)
+  
+  lines(
+    d$x,
+    d$y / max(d$y),
+    col = "black",
+    lwd = 2
+  )
 }
 
-png("perfusion_scatterplot_matrix.png", width = 4600, height = 4600, res = 300)
-pairs(spm_vars, labels = vlab,
-      lower.panel = panel_lower, upper.panel = panel_upper, diag.panel = panel_diag,
-      gap = 0.3, cex.labels = 0.9, cex.axis = 0.95, oma = c(4,4,4,4))
+
+png(
+  "perfusion_scatterplot_matrix.png",
+  width = 4600,
+  height = 4600,
+  res = 300
+)
+
+par(
+  las = 1
+)
+
+pairs(
+  spm_vars,
+  labels = vlab,
+  lower.panel = panel_lower,
+  upper.panel = panel_upper,
+  diag.panel = panel_diag,
+  
+  gap = 0.30,
+  
+  # Larger, bold variable names on diagonal
+  cex.labels = 1.55,
+  font.labels = 2,
+  
+  # Axis numbers
+  cex.axis = 1.05,
+  
+  oma = c(4, 4, 4, 4)
+)
+
 dev.off()
 
 get_cor <- function(a, b) {
@@ -182,9 +372,8 @@ get_cor <- function(a, b) {
 }
 
 get_cor("Gross Score", "CT Score")
-get_cor("Histology Score", "Gross Score")
-get_cor("Histology Score", "CT Score")
+get_cor("Histology", "Gross Score")
+get_cor("Histology", "CT Score")
 get_cor("Weight", "Gross Score")
-get_cor("Flow (mL/min/lb)", "Gross Score")
+get_cor("Flow Rate", "Gross Score")
 get_cor("Age", "Weight")
-
